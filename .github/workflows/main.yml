@@ -1,0 +1,28 @@
+name: Deploy PHP App to EC2
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Desplegar a EC2 via SSH
+        env:
+          PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          HOST: ${{ secrets.SSH_HOST }}
+          USER: ${{ secrets.SSH_USER }}
+        run: |
+          echo "$PRIVATE_KEY" > key.pem && chmod 600 key.pem
+          ssh -o StrictHostKeyChecking=no -i key.pem $USER@$HOST '
+            cd /var/www/ariketa3/daw-2526-CI-ariketa3/src && \
+            git fetch origin main && \
+            git reset --hard origin/main && \
+            echo "✅ Despliegue completado correctamente."
+          '
+
