@@ -7,5 +7,7 @@ class Hola {
         return "Hola Mundo";
     }
 }
-
-<h1>kaixooooo</h1>
+?>
+<html>
+    <h1>KAIXOOOOO</h1>
+</html>
