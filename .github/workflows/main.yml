@@ -20,9 +20,8 @@ jobs:
         run: |
           echo "$PRIVATE_KEY" > key.pem && chmod 600 key.pem
           ssh -o StrictHostKeyChecking=no -i key.pem $USER@$HOST '
-            cd /var/www/ariketa3/daw-2526-CI-ariketa3/src && \
+            cd /var/www/ariketa3/daw-2526-CI-ariketa3 && \
             git fetch origin main && \
             git reset --hard origin/main && \
             echo "✅ Despliegue completado correctamente."
           '
-
