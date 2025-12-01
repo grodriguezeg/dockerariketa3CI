@@ -8,6 +8,4 @@ class Hola {
     }
 }
 ?>
-<html>
-    <h1>KAIXOOOOO</h1>
-</html>
+
